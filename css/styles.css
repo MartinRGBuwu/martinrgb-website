@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+@media (max-width: 480px) {
+  .featured-image { height: clamp(180px, 45vw, 260px); }
+}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -144,7 +147,8 @@ h1 {
 
 .featured-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 40px;
     align-items: center;
 }
@@ -234,6 +238,7 @@ h1 {
 }
 
 .featured-image {
+    min-width: 0px;
     width: 100%;
     height: 300px;
     background: rgba(255, 255, 255, 0.1);
@@ -250,7 +255,11 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    min-width: 0;            /* belt-and-suspenders with flex/grid */
+  max-width: 100%;
 }
+
+
 
 /* Other Projects Grid */
 .projects-grid {
@@ -473,6 +482,7 @@ h1 {
     font-size: 1.4em;
     font-weight: 600;
     letter-spacing: 0.5px;
+    overflow-wrap: anywhere;
 }
 
 /* Animations */
